@@ -76,7 +76,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="mx-auto max-w-4xl space-y-4 px-4 py-8">
+  <div class="w-full space-y-4 px-4 py-8">
     <div>
       <h1 class="text-2xl font-semibold tracking-tight">API Keys</h1>
       <p class="mt-1 text-sm text-muted-foreground">

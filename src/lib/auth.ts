@@ -15,12 +15,23 @@ export type EndpointRow = {
   id: string
   name: string
   method: string
-  path: string
+  openai_path: string
+  cursor_path?: string | null
   group: string
   status: string
   latency_ms?: number | null
   last_checked_at?: string | null
   last_error?: string | null
+  created_at?: string | null
+  updated_at?: string | null
+}
+
+export type EndpointInput = {
+  name: string
+  method: string
+  openai_path: string
+  cursor_path?: string | null
+  group: string
 }
 
 export type APIKeyRow = {
@@ -106,6 +117,30 @@ export function login(body: { username: string; password: string }): Promise<Aut
 
 export function fetchEndpoints(): Promise<EndpointRow[]> {
   return apiFetch<EndpointRow[]>('/api/v1/endpoints', {}, true)
+}
+
+export function fetchEndpoint(id: string): Promise<EndpointRow> {
+  return apiFetch<EndpointRow>(`/api/v1/endpoints/${id}`, {}, true)
+}
+
+export function createEndpoint(body: EndpointInput): Promise<EndpointRow> {
+  return apiFetch<EndpointRow>(
+    '/api/v1/endpoints',
+    { method: 'POST', body: JSON.stringify(body) },
+    true,
+  )
+}
+
+export function updateEndpoint(id: string, body: EndpointInput): Promise<EndpointRow> {
+  return apiFetch<EndpointRow>(
+    `/api/v1/endpoints/${id}`,
+    { method: 'PUT', body: JSON.stringify(body) },
+    true,
+  )
+}
+
+export function deleteEndpoint(id: string): Promise<void> {
+  return apiFetch<void>(`/api/v1/endpoints/${id}`, { method: 'DELETE' }, true)
 }
 
 export function fetchAPIKeys(): Promise<APIKeyRow[]> {

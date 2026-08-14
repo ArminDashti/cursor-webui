@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
 import EndpointsView from '@/views/EndpointsView.vue'
+import EndpointFormView from '@/views/EndpointFormView.vue'
 import ApiKeysView from '@/views/ApiKeysView.vue'
 import { getToken } from '@/lib/auth'
 
@@ -10,6 +11,18 @@ const router = createRouter({
     { path: '/', redirect: '/endpoints' },
     { path: '/login', name: 'login', component: LoginView, meta: { guest: true } },
     { path: '/endpoints', name: 'endpoints', component: EndpointsView, meta: { requiresAuth: true } },
+    {
+      path: '/endpoints/new',
+      name: 'endpoint-new',
+      component: EndpointFormView,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/endpoints/:id/edit',
+      name: 'endpoint-edit',
+      component: EndpointFormView,
+      meta: { requiresAuth: true },
+    },
     { path: '/api-keys', name: 'api-keys', component: ApiKeysView, meta: { requiresAuth: true } },
   ],
 })
