@@ -80,12 +80,13 @@ onMounted(() => {
     <div>
       <h1 class="text-2xl font-semibold tracking-tight">API Keys</h1>
       <p class="mt-1 text-sm text-muted-foreground">
-        Create gateway keys for OpenAI SDK / HTTP clients. Use
-        <code class="rounded bg-muted px-1 py-0.5 text-xs">Authorization: Bearer ck_…</code>
-        with base URL
+        Create gateway keys for OpenAI SDK / HTTP clients, or send a Cursor Cloud
+        <code class="rounded bg-muted px-1 py-0.5 text-xs">crsr_…</code> key as
+        <code class="rounded bg-muted px-1 py-0.5 text-xs">Authorization: Bearer</code>
+        to
         <code class="rounded bg-muted px-1 py-0.5 text-xs">http://localhost:8130/v1</code>.
-        Cursor Cloud <code class="rounded bg-muted px-1 py-0.5 text-xs">CURSOR_API_KEY</code> stays
-        on the server env.
+        Server env <code class="rounded bg-muted px-1 py-0.5 text-xs">CURSOR_API_KEY</code>
+        is only needed for <code class="rounded bg-muted px-1 py-0.5 text-xs">ck_…</code> keys.
       </p>
     </div>
 
